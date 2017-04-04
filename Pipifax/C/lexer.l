@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include "lexer.h"
-#inlude "parser.tab.h"
+#include "parser.tab.h"
 %}
 
 L	[A-Za-z_]
@@ -10,7 +10,7 @@ D0	[0-9]
 D1	[1-9]
 SP	[ \t\n]
 
-%option yylineno
+%option yylineno noyywrap
 
 %%
 
