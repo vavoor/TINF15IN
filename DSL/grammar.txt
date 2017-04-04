@@ -1,0 +1,20 @@
+Tokens are SHAPE END SIZE DEF ID NUMBER ( ) , ; + - * /
+
+
+Shape : SHAPE ID SIZE NUMBER NUMBER; Stmt* END
+
+Stmt : Command | Definition
+
+Command : ID Term* ';'
+
+Definition : DEF ID ParameterList? Stmt* END
+
+ParamaterList : '(' Paramaters? ')'
+
+Paramaters : ID ( ',' ID )*
+
+Term : Primary ( Op Primary )*
+
+Primary : ID | NUMBER | '-' Primary | '(' Term ')'
+
+Op : '+' | '-' | '*' | '/'
