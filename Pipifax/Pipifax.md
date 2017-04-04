@@ -223,9 +223,9 @@ Ausdrücke kommen auf der rechten Seite von Zuweisungen, als Funktionsargumente 
 ## Typumwandlungen
 In Pipifax gibt es keine impliziten Typkonvertierungen. a op b (wobei op ein beliebiger Operator ist) führt zu einem Fehler, wenn a und b nicht vom selben Typ sind.
 
-Der Cast-Operatoren (int) wandelt den direkt folgenden double-Ausdruck in einen Integer-Ausdruck um, indem die Nachkommastellen abgeschnitten werden. Das Verhalten ist undefiniert, wenn der Wert zu groß oder zu klein ist.
+Der Cast-Operatoren `(int)` wandelt den direkt folgenden double-Ausdruck in einen Integer-Ausdruck um, indem die Nachkommastellen abgeschnitten werden. Das Verhalten ist undefiniert, wenn der Wert zu groß oder zu klein ist.
 
-Der Cast-Operator (double) wandeln den direkt folgenden Integer-Ausdruck in eine Fließkommazahl um.
+Der Cast-Operator `(double)` wandeln den direkt folgenden Integer-Ausdruck in eine Fließkommazahl um.
 
 Der Cast-Operator hat die selbe Präzedenz wie ein Vorzeichen.
 
