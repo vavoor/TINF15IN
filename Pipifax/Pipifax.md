@@ -217,8 +217,7 @@ Ausdrücke kommen auf der rechten Seite von Zuweisungen, als Funktionsargumente 
       * -1 wenn a lexikalisch kleiner als b ist
       * 0 wenn a und b gleich sind
       * 1 wenn a lexikalisch größer als b ist
-
-&&, || und ! (Not, Inversion) sind für Ganzzahlen definiert und geben eine 0 oder 1 zurück
+  * &&, || und ! (Not, Inversion) sind für Ganzzahlen definiert und geben eine 0 oder 1 zurück
 
 ## Typumwandlungen
 In Pipifax gibt es keine impliziten Typkonvertierungen. a op b (wobei op ein beliebiger Operator ist) führt zu einem Fehler, wenn a und b nicht vom selben Typ sind.
