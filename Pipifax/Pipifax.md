@@ -41,7 +41,7 @@ var d [30]int  # d is an array of 30 integers
 var e [4][5] string  # e is an array of 4 arrays of 5 strings
 ```
 
-##Funktionen
+## Funktionen
 Funktionen können in beliebiger Reihenfolge definiert werden. Die Funktion main wird beim Starten des Programms automatisch aufgerufen.
 ```
 func main(args *[]string) int {
@@ -61,7 +61,7 @@ Falls eine Funktionen einen Wert zurückgibt (hier vom Typ double), dann ist inn
 
 Funktionen dürfen nicht innerhalb von Funktionen definiert werden.
 
-##Funktionsparameter
+## Funktionsparameter
 Die Parameter einer Funktion werden in den Klammern ähnlich wie Variablen deklariert, allerdings wird das Schlüsselwort var weggelassen.
 
 ```
@@ -120,7 +120,8 @@ func f5(illegal []int)
 
 Arrays unbekannter Größe dürfen nicht by value übergeben werden.
 
-##Lokale Variablen
+## Lokale Variablen
+
 Syntaktisch werden lokale Variablen wie globale Variablen deklariert. Allerdings befindet sich die Deklaration in einem Statement-Block (d.h. innerhalb von geschweiften Klammern). Der Gültigkeitsbereich (Scope) beginnt mit der Deklaration und endet mit dem umschließenden Block.
 
 ```
@@ -151,7 +152,7 @@ func f(x int) {  # scope if x/int starts here
 # x/array is again visible here
 ```
 
-##Statements
+## Statements
 Statements (Programmbefehle) können nur innerhalb von Funktionen vorkommen. Es gibt folgende Arten von Statements:
 
 - Zuweisungen
@@ -163,7 +164,7 @@ Statements werden nicht mit Semikolon terminiert. Es dürfen mehrere Statements 
 
 Innerhalb von Statement-Blöcken können Befehle und Variablendeklarationen in beliebiger Reihenfolge vorkommen.
 
-###Zuweisungen:
+### Zuweisungen:
 
 ```
 a = 3.14  # ok
@@ -174,7 +175,7 @@ a()[x] = 0  # Not allowed!
 
 Dabei muss der Typ des Ausdrucks auf der rechten Seite mit dem Typ der Variablen auf der linken Seite übereinstimmen. Eine implizite Typkonvertierung findet nicht statt.
 
-###Verzweigungen:
+### Verzweigungen:
 
 ```
 if a {
@@ -191,7 +192,7 @@ else {
 
 Eine Bedingung gilt als erfüllt, wenn der Ausdruck nach dem Schlüsselwort if vom Typ int und ungleich 0 ist.
 
-###Schleifen:
+### Schleifen:
 
 ```
 while i<length(s) {
@@ -200,25 +201,26 @@ while i<length(s) {
 
 Eine Bedingung gilt als erfüllt, wenn der Ausdruck nach dem Schlüsselwort while vom Typ int und ungleich 0 ist.
 
-###Funktionsaufrufe:
+### Funktionsaufrufe:
 
 ```
 sqrt(17.3)
 print(1+2, sqrt(17))
 ```
 
-###Ausdrücke
+### Ausdrücke
 Ausdrücke kommen auf der rechten Seite von Zuweisungen, als Funktionsargumente oder als Bedingungen in Schleifen oder Verzweigungen vor. Ausdrücke bestehen aus Literalen, Funktionsaufrufen, Variablen- oder Arrayzugriffen oder Verknüpfungen von Ausdrücken. Operatoren sind: +, -, *, /, <, <=, >, >=, ==, !=, &&, || und !
 
-+, -, *, / und das Vorzeichen (-) sind für Ganzzahlen und Fließkommazahlen definiert
-<, <=, >, >=, == und != sind für Ganzzahlen und Fließkommazahlen definiert und geben eine Ganzzahl (0 oder 1) zurück
-<=> ist für Zeichenketten definiert und gibt für a<=>b Folgendes zurück
--1 wenn a lexikalisch kleiner als b ist
-0 wenn a und b gleich sind
-1 wenn a lexikalisch größer als b ist
+   * +, -, *, / und das Vorzeichen (-) sind für Ganzzahlen und Fließkommazahlen definiert
+   * <, <=, >, >=, == und != sind für Ganzzahlen und Fließkommazahlen definiert und geben eine Ganzzahl (0 oder 1) zurück
+   * <=> ist für Zeichenketten definiert und gibt für a<=>b Folgendes zurück
+      * -1 wenn a lexikalisch kleiner als b ist
+      * 0 wenn a und b gleich sind
+      * 1 wenn a lexikalisch größer als b ist
+
 &&, || und ! (Not, Inversion) sind für Ganzzahlen definiert und geben eine 0 oder 1 zurück
 
-##Typumwandlungen
+## Typumwandlungen
 In Pipifax gibt es keine impliziten Typkonvertierungen. a op b (wobei op ein beliebiger Operator ist) führt zu einem Fehler, wenn a und b nicht vom selben Typ sind.
 
 Der Cast-Operatoren (int) wandelt den direkt folgenden double-Ausdruck in einen Integer-Ausdruck um, indem die Nachkommastellen abgeschnitten werden. Das Verhalten ist undefiniert, wenn der Wert zu groß oder zu klein ist.
