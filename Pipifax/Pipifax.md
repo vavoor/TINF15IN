@@ -3,20 +3,18 @@
 Pipifax ist eine einfache Programmiersprache, die die wesentlichen Elemente einer prozeduralen Sprache enthält. Es ist eine kleine Sprache, für die auch in relativ kurzer Zeit ein Übersetzer entwickelt werden kann.
 
 ## Die Eingabe
-
 Ein Pipifax-Programm besteht aus einer Datei mit 8-Bit ASCII-Daten (z.B. ISO 8859-1). In dieser Datei sind alle Funktionen und globalen Variablen definiert. Die Reihenfolge darin spielt keine Rolle, d.h. Funktionen können andere Funktionen und globale Variablen nutzen, die in der Datei erst danach deklariert/definiert werden.
 
-# Kommentare
-
+## Kommentare
 Kommentare in der Eingabe werden mit dem #-Zeichen markiert und reichen bis zum Zeilenende:
 
 \# Das ist ein Kommentar
 
 
-# Bezeichner
+## Bezeichner
 Bezeichner (Identifier) für Funktionen und Variablen beginnen mit einem Buchstaben oder Unterstrich und können danach beliebig viele Buchstaben, Ziffern und Unterstriche enthalten.
 
-# Typen
+## Typen
 In Pipifax existieren folgende Datentypen:
 
 - Vorzeichenbehaftete, ganze Zahlen im Wertebereich -2^31bis +2^31-1 (int)
@@ -34,19 +32,22 @@ Ein String darf auch Zeilenumbrüche enthalten.
 
 # Variablen
 Variablen - global oder lokal - werden wie folgt deklariert:
-
+`
 var a int  # a is a 32-bit integer
 var b double  # b is a 64-bit double
 var c string  # c is a string of ASCII characters
 var d [30]int  # d is an array of 30 integers
 var e [4][5] string  # e is an array of 4 arrays of 5 strings
-Funktionen
+`
+
+##Funktionen
 Funktionen können in beliebiger Reihenfolge definiert werden. Die Funktion main wird beim Starten des Programms automatisch aufgerufen.
 
-func main(args *[]string) int {
+`func main(args *[]string) int {
   # Here's the code
-}
-Kommandozeilenargumente werden an die main-Funktion als Referenz auf ein Array von strings übergeben. 
+}`
+
+Kommandozeilenargumente werden an die main-Funktion als Referenz auf ein Array von strings übergeben.
 
 func square(v double) double {
   square = v*v
@@ -60,7 +61,7 @@ Die Parameter einer Funktion werden in den Klammern ähnlich wie Variablen dekla
 
 func print (i int, d double, s string) {
   # a function with no return value
-} 
+}
  Eine Funktion kann beliebig viele Argumente haben. Sie muss auch nicht unbedingt einen Rückgabewert besitzen.
 
 func no_arguments() {}
@@ -91,7 +92,7 @@ func f4(a [2]double)
 f4 hat als Parameter ein Array mit zwei double-Werten, die by value übergeben (sprich: kopiert) werden.
 
 func f5(illegal []int)
-Arrays unbekannter Größe dürfen nicht by value übergeben werden. 
+Arrays unbekannter Größe dürfen nicht by value übergeben werden.
 
 Lokale Variablen
 Syntaktisch werden lokale Variablen wie globale Variablen deklariert. Allerdings befindet sich die Deklaration in einem Statement-Block (d.h. innerhalb von geschweiften Klammern). Der Gültigkeitsbereich (Scope) beginnt mit der Deklaration und endet mit dem umschließenden Block.
@@ -117,7 +118,7 @@ func f(x int) {  # scope if x/int starts here
     a = a-1
   }  # scope of x/string ends here
 } # scope of x/int and x/double ends here
-# x/array is again visible here 
+# x/array is again visible here
 Statements
 Statements (Programmbefehle) können nur innerhalb von Funktionen vorkommen. Es gibt folgende Arten von Statements:
 
@@ -143,12 +144,12 @@ Verzweigungen:
 if a {
   # Weitere Statements oder Variablen-Deklarationen
 }
- 
+
 
 if b!=5 {
 }
 else {
-} 
+}
 
 Eine Bedingung gilt als erfüllt, wenn der Ausdruck nach dem Schlüsselwort if vom Typ int und ungleich 0 ist.
 
@@ -157,7 +158,7 @@ Schleifen:
 while i<length(s) {
 }
 
-Eine Bedingung gilt als erfüllt, wenn der Ausdruck nach dem Schlüsselwort while vom Typ int und ungleich 0 ist. 
+Eine Bedingung gilt als erfüllt, wenn der Ausdruck nach dem Schlüsselwort while vom Typ int und ungleich 0 ist.
 
 Funktionsaufrufe:
 
