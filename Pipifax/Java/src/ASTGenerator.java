@@ -1,0 +1,2 @@
+class ASTGenerator extends PipifaxBaseVisitor {
+}
