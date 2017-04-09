@@ -28,5 +28,9 @@
 *.out
 *.app
 
+# Java compiler products
+*.class
+*.jar
+
 # Editor backups
 *~
