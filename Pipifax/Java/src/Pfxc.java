@@ -16,9 +16,9 @@ public class Pfxc {
       CommonTokenStream tokens = new CommonTokenStream(lexer);
       PipifaxParser parser = new PipifaxParser(tokens);
 
-      ParseTree tree = parser.program();
+      ParseTree root = parser.program();
       ASTGenerator gen = new ASTGenerator();
-      gen.visit(tree);
+      root.accept(gen);
     }
     catch (Exception e) {
       System.err.println(e);
