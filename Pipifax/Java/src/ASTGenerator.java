@@ -1,2 +1,2 @@
-class ASTGenerator extends PipifaxBaseVisitor {
+class ASTGenerator extends PipifaxBaseVisitor<Void> {
 }

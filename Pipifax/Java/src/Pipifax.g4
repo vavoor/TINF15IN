@@ -74,18 +74,18 @@ exprList
     ;
 
 expr
-    : varValue
-    | STRING_LITERAL
-    | INT_LITERAL
-    | DOUBLE_LITERAL
-    | '(' expr ')'
-    | ( '-' | '!' ) expr
-    | expr ( '*' | '/' | '%' ) expr
-    | expr ( '+' | '-' ) expr
-    | expr ( '<' | '<=' | '>' | '>=' ) expr
-    | expr ( '==' | '!=' | '<=>' ) expr
-    | expr '&&' expr
-    | expr '||' expr
+    : varValue #varExpr
+    | STRING_LITERAL #stringLiteralExpr
+    | INT_LITERAL #intLiteralExpr
+    | DOUBLE_LITERAL #doubleLiteralExpr
+    | '(' expr ')' #bracketExpr
+    | ( '-' | '!' ) expr #unaryExpr
+    | expr ( '*' | '/' | '%' ) expr #multExpre
+    | expr ( '+' | '-' ) expr #addExpr
+    | expr ( '<' | '<=' | '>' | '>=' ) expr #compExpr
+    | expr ( '==' | '!=' | '<=>' ) expr #eqExpr
+    | expr '&&' expr #andExpr
+    | expr '||' expr #orExpr
     ;
 
 varValue
