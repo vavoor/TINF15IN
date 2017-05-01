@@ -1,0 +1,2 @@
+class ASTType extends ASTNode {
+}

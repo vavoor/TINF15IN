@@ -1,10 +1,10 @@
 grammar Pipifax;
 
 program
-    : ( functionDefininition | variableDeclaration )*
+    : ( functionDefinition | variableDeclaration )*
     ;
 
-functionDefininition
+functionDefinition
     : 'func' ID '(' parameterList? ')' type? block
     ;
 
