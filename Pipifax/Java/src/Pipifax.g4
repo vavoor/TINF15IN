@@ -17,9 +17,9 @@ parameter
     ;
 
 parameterType
-    : type
-    | '*' type
-    | '*' '[' ']' type
+    : type #theType
+    | '*' type #referenceType
+    | '*' '[' ']' type #arrayReferenceType
     ;
 
 variableDeclaration
@@ -27,10 +27,10 @@ variableDeclaration
     ;
 
 type
-    : 'int'
-    | 'double'
-    | ' string'
-    | '[' INT_LITERAL ']' type
+    : 'int' #intType
+    | 'double' #doubleType
+    | ' string' #stringType
+    | '[' INT_LITERAL ']' type #arrayType
     ;
 
 block
@@ -61,8 +61,8 @@ functionCallStatement
     ;
 
 lvalue
-    : ID
-    | lvalue '[' expr ']'
+    : ID #idLValue
+    | lvalue '[' expr ']' #indexedLValue
     ;
 
 functionCall
@@ -80,7 +80,7 @@ expr
     | DOUBLE_LITERAL #doubleLiteralExpr
     | '(' expr ')' #bracketExpr
     | ( '-' | '!' ) expr #unaryExpr
-    | expr ( '*' | '/' | '%' ) expr #multExpre
+    | expr ( '*' | '/' | '%' ) expr #multExpr
     | expr ( '+' | '-' ) expr #addExpr
     | expr ( '<' | '<=' | '>' | '>=' ) expr #compExpr
     | expr ( '==' | '!=' | '<=>' ) expr #eqExpr
@@ -89,9 +89,9 @@ expr
     ;
 
 varValue
-    : ID
-    | functionCall
-    | varValue '[' expr ']'
+    : ID #idValue
+    | functionCall #functionCallValue
+    | varValue '[' expr ']' #indexedValue
     ;
 
 fragment

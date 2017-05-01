@@ -1,0 +1,2 @@
+class ASTStringType extends ASTType {
+}

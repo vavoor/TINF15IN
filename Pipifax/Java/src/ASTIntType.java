@@ -1,0 +1,2 @@
+class ASTIntType extends ASTType {
+}

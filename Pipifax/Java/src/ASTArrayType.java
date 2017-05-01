@@ -1,0 +1,2 @@
+class ASTArrayType extends ASTType {
+}

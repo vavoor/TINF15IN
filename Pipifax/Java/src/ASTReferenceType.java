@@ -1,0 +1,2 @@
+class ASTReferenceType extends ASTType {
+}

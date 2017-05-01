@@ -1,0 +1,2 @@
+class ASTDoubleType extends ASTType {
+}

@@ -1,0 +1,2 @@
+class ASTArrayReferenceType extends Type {
+}
