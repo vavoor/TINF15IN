@@ -3,9 +3,9 @@ class ASTGenerator extends PipifaxBaseVisitor<ASTNode> {
     public ASTNode visitProgram(PipifaxParser.ProgramContext ctx) {
         ASTProgram program = new ASTProgram();
 
-        for (PipifaxParser.VariableDeclarationContext c : ctx.variableDeclaration()) {
+        for (PipifaxParser.GlobalVariableDeclarationContext c : ctx.globalVariableDeclaration()) {
             ASTNode v = c.accept(this);
-            program.addGlobalVariable((ASTVariableDeclaration)v);
+            program.addGlobalVariable((ASTGlobalVariableDeclaration)v);
         }
 
         for (PipifaxParser.FunctionDefinitionContext c : ctx.functionDefinition()) {
@@ -16,27 +16,51 @@ class ASTGenerator extends PipifaxBaseVisitor<ASTNode> {
         return program;
     }
 
-    public ASTNode visitVariableDeclaration(PipifaxParser.VariableDeclarationContext ctx) {
+    public ASTNode visitGlobalVariableDeclaration(PipifaxParser.GlobalVariableDeclarationContext ctx) {
         ASTType type = (ASTType) ctx.type().accept(this);
         ASTGlobalVariableDeclaration var = new ASTGlobalVariableDeclaration(ctx.ID().getSymbol().getText(),type);
         return var;
     }
 
     public ASTNode visitFunctionDefinition(PipifaxParser.FunctionDefinitionContext ctx) {
+    	String namen = ctx.ID().getSymbol().getText();
         ASTType type = (ASTType) ctx.type().accept(this);
-        ASTFunctionDefinition func = new ASTFunctionDefinition(ctx.ID().getSymbol().getText(),type);
+        AST
+        ASTFunctionDefinition func = new ASTFunctionDefinition(name,type);
         return func;
     }
 
-    // T visitReferenceType(PipifaxParser.ReferenceTypeContext ctx);
-    // T visitArrayReferenceType(PipifaxParser.ArrayReferenceTypeContext ctx);
-
     public ASTNode visitIntType(PipifaxParser.IntTypeContext ctx) {
+    	return new ASTIntType();
     }
 
-    // T visitDoubleType(PipifaxParser.DoubleTypeContext ctx);
-    // T visitStringType(PipifaxParser.StringTypeContext ctx);
-    // T visitArrayType(PipifaxParser.ArrayTypeContext ctx);
+    public ASTNode visitDoubleType(PipifaxParser.DoubleTypeContext ctx) {
+    	return new ASTDoubleType();
+    }
+
+    public ASTNode visitStringType(PipifaxParser.StringTypeContext ctx) {
+    	return new ASTStringType();
+    }
+
+    public ASTNode visitArrayType(PipifaxParser.ArrayTypeContext ctx) {
+    	int size = Integer.parseInt(ctx.INT_LITERAL().getSymbol().getText());
+    	ASTType t = (ASTType) ctx.type().accept(this);
+    	ASTArrayType type = new ASTArrayType(size,t);
+    	return type;
+    }
+
+    public ASTNode visitReferenceType(PipifaxParser.ReferenceTypeContext ctx) {
+    	ASTType baseType = (ASTType) ctx.type().accept(this);
+    	ASTReferenceType type = new ASTReferenceType(baseType);
+    	return type;
+    }
+
+    public ASTNode visitArrayReferenceType(PipifaxParser.ArrayReferenceTypeContext ctx) {
+    	ASTType baseType = (ASTType) ctx.type().accept(this);
+    	ASTReferenceType type = new ASTReferenceType(new ASTArrayType(0,baseType));
+    	return type;
+    }
+
     // T visitParameterList(PipifaxParser.ParameterListContext ctx);
     // T visitParameter(PipifaxParser.ParameterContext ctx);
     // T visitTheType(PipifaxParser.TheTypeContext ctx);

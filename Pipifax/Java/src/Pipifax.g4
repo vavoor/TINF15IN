@@ -1,7 +1,7 @@
 grammar Pipifax;
 
 program
-    : ( functionDefinition | variableDeclaration )*
+    : ( functionDefinition | globalVariableDeclaration )*
     ;
 
 functionDefinition
@@ -22,7 +22,7 @@ parameterType
     | '*' '[' ']' type #arrayReferenceType
     ;
 
-variableDeclaration
+globalVariableDeclaration
     : 'var' ID type
     ;
 
@@ -34,7 +34,11 @@ type
     ;
 
 block
-    : '{' statement* '}'
+    : '{' ( localVariableDeclaration | statement )* '}'
+    ;
+
+localVariableDeclaration
+    : 'var' ID type
     ;
 
 statement
